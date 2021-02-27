@@ -1,8 +1,15 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import products from '../products.json'
+import { initiateCheckout } from '../lib/payments'
 
 export default function Home() {
+
+  const handleInitiateCheckout = id => {
+    const LINE_ITEM = { price: id, quantity: 1 }
+    initiateCheckout([ LINE_ITEM ])
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +23,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          The best space jellyfish swag in the universe!!!
+          The best space jellyfish swag in the universe!
         </p>
 
         <ul className={styles.grid}>
@@ -27,6 +34,9 @@ export default function Home() {
               <span>${price}</span>
               <p>{description}</p>
             </a>
+            <p>
+              <button className={styles.button} onClick={() => handleInitiateCheckout(id)}>Buy now!</button>
+            </p>
           </li>))}
         </ul>
       </main>

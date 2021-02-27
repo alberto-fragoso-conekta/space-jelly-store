@@ -99,20 +99,13 @@
   }
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
 .card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
 }
 
 .card p {
-  margin: 0;
+  margin: 0 0 1em;
   font-size: 1.25rem;
   line-height: 1.5;
 }
@@ -126,4 +119,17 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.button {
+  color: white;
+  font-family: inherit;
+  font-size: 0.9em;
+  font-weight: 700;
+  background-color: blueviolet;
+  padding: 0.8em 1.4em;
+  border-radius: 0.2em;
+  border: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
