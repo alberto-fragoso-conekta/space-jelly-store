@@ -1,9 +1,11 @@
 import products from '../products.json'
+import { createContext, useContext, useState } from 'react'
 import { initiateCheckout } from '../lib/payments'
 import { INITIAL_CART_STATE } from '../lib/constans'
-import { useState } from 'react'
 
-export const useCart = () => {
+export const CartContext = createContext()
+
+export const useCartState = () => {
   const [cart, setCart] = useState(INITIAL_CART_STATE)
 
   const addToCart = id => {
@@ -48,4 +50,9 @@ export const useCart = () => {
     subTotal,
     totalItems,
   }
+}
+
+export const useCart = () => {
+  const CART = useContext(CartContext)
+  return CART
 }

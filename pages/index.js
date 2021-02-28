@@ -16,27 +16,8 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Space Jelly Shop
+          The best space jellyfish swag in the universe! 
         </h1>
-
-        <p className={styles.description}>
-          The best space jellyfish swag in the universe!
-        </p>
-
-        <ul className={styles.cart}> 
-          <li>
-            <strong>Items:</strong> {totalItems}
-          </li>
-          <li>
-            <strong>Total cost:</strong> ${subTotal}
-          </li>
-          <li>
-            <button className={`${styles.button} ${styles.cartButton}`} onClick={handleInitiateCheckout}>
-              <FaShoppingCart />
-              Check out
-            </button>
-          </li>
-        </ul>
 
         <ul className={styles.grid}>
           {products.map(({ description, id, image, price, title }) => (<li className={styles.card} key={id}>
