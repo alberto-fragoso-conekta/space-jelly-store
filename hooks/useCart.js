@@ -1,12 +1,26 @@
 import products from '../products.json'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { initiateCheckout } from '../lib/payments'
-import { INITIAL_CART_STATE } from '../lib/constans'
+import { INITIAL_CART_STATE, SPACE_JELLY_CART_LOCAL_STORAGE_NAME } from '../lib/constans'
 
 export const CartContext = createContext()
 
 export const useCartState = () => {
   const [cart, setCart] = useState(INITIAL_CART_STATE)
+
+  useEffect(() => {
+    const STATE_FROM_LOCAL_STORE = window.localStorage.getItem(SPACE_JELLY_CART_LOCAL_STORAGE_NAME)
+    const CART_DATA = STATE_FROM_LOCAL_STORE && JSON.parse(STATE_FROM_LOCAL_STORE)
+
+    if (CART_DATA) {
+      setCart(CART_DATA)
+    }
+  }, [])
+
+  useEffect(() => {
+    const CART_DATA = JSON.stringify(cart)
+    window.localStorage.setItem(SPACE_JELLY_CART_LOCAL_STORAGE_NAME, CART_DATA)
+  }, [cart])
 
   const addToCart = id => {
     updateCart(prev => {
