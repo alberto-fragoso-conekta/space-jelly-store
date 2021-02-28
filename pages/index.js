@@ -1,14 +1,43 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
 import products from '../products.json'
+import styles from '../styles/Home.module.css'
 import { initiateCheckout } from '../lib/payments'
+import { INITIAL_CART_STATE } from '../lib/constans'
+import { useState } from 'react'
 
 export default function Home() {
+  const [cart, updateCart] = useState(INITIAL_CART_STATE)
 
-  const handleInitiateCheckout = id => {
-    const LINE_ITEM = { price: id, quantity: 1 }
-    initiateCheckout([ LINE_ITEM ])
+  const handleInitiateCheckout = () => {
+    initiateCheckout(cartItems.map(({ id, quantity }) => ({ price: id, quantity })))
   }
+
+  const addToCart = id => {
+    updateCart(prev => {
+      const CART_STATE = { ...prev }
+
+      if(CART_STATE.products[id]) {
+        CART_STATE.products[id].quantity = CART_STATE.products[id].quantity + 1
+      } else {
+        CART_STATE.products[id] = { id, quantity: 1 }
+      }
+
+      return CART_STATE
+    })
+  }
+
+  const cartItems = Object.keys(cart.products).map(key => {
+    const { price: PRODUCT_PRICE } = products.find(({ id }) => `${id}` === `${key}`)
+    
+    return {
+      ...cart.products[key],
+      pricePerItem: PRODUCT_PRICE
+    }
+  })
+
+  const subTotal = cartItems.reduce((acc, { pricePerItem, quantity }) => acc += pricePerItem * quantity, 0)
+
+  const totalItems = cartItems.reduce((acc, { quantity }) => acc += quantity, 0)
 
   return (
     <div className={styles.container}>
@@ -26,6 +55,14 @@ export default function Home() {
           The best space jellyfish swag in the universe!
         </p>
 
+        <p className={styles.description}>
+          <strong>Items:</strong> {totalItems}
+          <br />
+          <strong>Total cost:</strong> ${subTotal}
+          <br />
+          <button className={styles.button} onClick={handleInitiateCheckout}>Check out</button>
+        </p>
+
         <ul className={styles.grid}>
           {products.map(({ description, id, image, price, title }) => (<li className={styles.card} key={id}>
             <a href="#">
@@ -35,7 +72,7 @@ export default function Home() {
               <p>{description}</p>
             </a>
             <p>
-              <button className={styles.button} onClick={() => handleInitiateCheckout(id)}>Buy now!</button>
+              <button className={styles.button} onClick={() => addToCart(id)}>Buy now!</button>
             </p>
           </li>))}
         </ul>
