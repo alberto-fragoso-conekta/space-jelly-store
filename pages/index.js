@@ -1,43 +1,11 @@
 import Head from 'next/head'
-import products from '../products.json'
 import styles from '../styles/Home.module.css'
-import { initiateCheckout } from '../lib/payments'
-import { INITIAL_CART_STATE } from '../lib/constans'
-import { useState } from 'react'
+import products from '../products.json'
+import { FaShoppingCart } from 'react-icons/fa'
+import { useCart } from '../hooks/useCart'
 
 export default function Home() {
-  const [cart, updateCart] = useState(INITIAL_CART_STATE)
-
-  const handleInitiateCheckout = () => {
-    initiateCheckout(cartItems.map(({ id, quantity }) => ({ price: id, quantity })))
-  }
-
-  const addToCart = id => {
-    updateCart(prev => {
-      const CART_STATE = { ...prev }
-
-      if(CART_STATE.products[id]) {
-        CART_STATE.products[id].quantity = CART_STATE.products[id].quantity + 1
-      } else {
-        CART_STATE.products[id] = { id, quantity: 1 }
-      }
-
-      return CART_STATE
-    })
-  }
-
-  const cartItems = Object.keys(cart.products).map(key => {
-    const { price: PRODUCT_PRICE } = products.find(({ id }) => `${id}` === `${key}`)
-    
-    return {
-      ...cart.products[key],
-      pricePerItem: PRODUCT_PRICE
-    }
-  })
-
-  const subTotal = cartItems.reduce((acc, { pricePerItem, quantity }) => acc += pricePerItem * quantity, 0)
-
-  const totalItems = cartItems.reduce((acc, { quantity }) => acc += quantity, 0)
+  const { addToCart, handleInitiateCheckout, subTotal, totalItems } = useCart()
 
   return (
     <div className={styles.container}>
@@ -55,13 +23,20 @@ export default function Home() {
           The best space jellyfish swag in the universe!
         </p>
 
-        <p className={styles.description}>
-          <strong>Items:</strong> {totalItems}
-          <br />
-          <strong>Total cost:</strong> ${subTotal}
-          <br />
-          <button className={styles.button} onClick={handleInitiateCheckout}>Check out</button>
-        </p>
+        <ul className={styles.cart}> 
+          <li>
+            <strong>Items:</strong> {totalItems}
+          </li>
+          <li>
+            <strong>Total cost:</strong> ${subTotal}
+          </li>
+          <li>
+            <button className={`${styles.button} ${styles.cartButton}`} onClick={handleInitiateCheckout}>
+              <FaShoppingCart />
+              Check out
+            </button>
+          </li>
+        </ul>
 
         <ul className={styles.grid}>
           {products.map(({ description, id, image, price, title }) => (<li className={styles.card} key={id}>
