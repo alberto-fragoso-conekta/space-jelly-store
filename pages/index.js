@@ -1,11 +1,11 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import products from '../products.json'
-import { FaShoppingCart } from 'react-icons/fa'
 import { useCart } from '../hooks/useCart'
 
 export default function Home() {
-  const { addToCart, handleInitiateCheckout, subTotal, totalItems } = useCart()
+  const { addToCart } = useCart()
 
   return (
     <div className={styles.container}>
@@ -20,17 +20,23 @@ export default function Home() {
         </h1>
 
         <ul className={styles.grid}>
-          {products.map(({ description, id, image, price, title }) => (<li className={styles.card} key={id}>
-            <a href="#">
-              <img alt={title} src={image} />
-              <h3>{title}</h3>
-              <span>${price}</span>
-              <p>{description}</p>
-            </a>
-            <p>
-              <button className={styles.button} onClick={() => addToCart(id)}>Buy now!</button>
-            </p>
-          </li>))}
+          {products.map(({ description, id, image, price, title }) => 
+          (
+            <li className={styles.card} key={id}>
+              <Link href={`/products/${id}`}>
+                <a>
+                  <img alt={title} src={image} />
+                  <h3>{title}</h3>
+                  <span>${price}</span>
+                  <p>{description}</p>
+                </a>
+              </Link>
+              <p>
+                <button className={styles.button} onClick={() => addToCart(id)}>Buy now!</button>
+              </p>
+            </li>
+          )
+        )}
         </ul>
       </main>
 
