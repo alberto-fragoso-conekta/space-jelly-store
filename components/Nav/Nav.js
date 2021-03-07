@@ -4,19 +4,18 @@ import { useCart } from '../../hooks/useCart'
 import styles from './Nav.module.css'
 
 const Nav = () => {
-  const { handleInitiateCheckout, subTotal } = useCart()
+  const { subTotal } = useCart()
 
   return (
     <nav className={styles.nav}>
       <Link href='/'>
         <p className={styles.navTitle}>✨🛸  Space Jelly Shop</p>
       </Link>
-      <p className={styles.navCart}>
-        <button onClick={handleInitiateCheckout}>
-          <FaShoppingCart />
-          ${subTotal}
-        </button>
-      </p>
+      <Link href='/cart'>
+        <p className={styles.navCart}>
+          🛒 ${subTotal}
+        </p>
+      </Link>
     </nav>
   )
 }

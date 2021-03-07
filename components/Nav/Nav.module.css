@@ -20,7 +20,7 @@
   margin-right: 0.5em;
 }
 
-.navCart button {
+.navCart {
   display: flex;
   align-items: center;
   font-size: 1.2em;

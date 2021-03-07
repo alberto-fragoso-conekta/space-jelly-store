@@ -1,0 +1,80 @@
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 0.5rem;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.title {
+  align-items: center;
+  display: flex;
+  font-size: 2.5rem;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.title svg {
+  margin-right: 0.5em;
+}
+
+.checkout {
+  font-size: 1.5rem;
+  margin-top: 2em;
+}
+
+.table {
+  font-size: 1.2rem;
+}
+
+.footer {
+  align-items: center;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer img {
+  margin-left: 0.5rem;
+}
+
+.footer a {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.logo {
+  height: 1em;
+}
+
+.button {
+  background-color: blueviolet;
+  border-radius: 0.2em;
+  border: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9em;
+  font-weight: 700;
+  padding: 0.8em 1.4em;
+}

@@ -45,6 +45,18 @@ export const useCartState = () => {
     }
   })
 
+  const cartItemsTableData = cartItems.map(({ id, pricePerItem, quantity }) => {
+    const { title } = products.find(({ id: PRODUCT_ID }) => PRODUCT_ID === id)
+
+    return {
+      id,
+      pricePerItem,
+      quantity,
+      title,
+      total: quantity * pricePerItem
+    }
+  })
+
   const handleInitiateCheckout = () => {
     initiateCheckout(cartItems.map(({ id, quantity }) => ({ price: id, quantity })))
   }
@@ -60,6 +72,7 @@ export const useCartState = () => {
   return {
     addToCart,
     cartItems,
+    cartItemsTableData,
     handleInitiateCheckout,
     subTotal,
     totalItems,

@@ -1,0 +1,22 @@
+.table {
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table thead td {
+  background-color: #1e242b;
+  color: white;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+.table td {
+  border-bottom: 1px solid #cfd7de;
+  padding: 1em;
+}
+
+.table td:not(:first-child) {
+  text-align: center;
+}
