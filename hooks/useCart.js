@@ -1,3 +1,4 @@
+import Quantity from '../components/Table/Quantity'
 import products from '../products.json'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { initiateCheckout } from '../lib/payments'
@@ -36,6 +37,18 @@ export const useCartState = () => {
     })
   }
 
+  const updateItem = (id, quantity) => {
+    updateCart(prev => {
+      const CART_STATE = { ...prev }
+
+      if (CART_STATE.products[id]) {
+        CART_STATE.products[id].quantity = quantity
+      }
+      
+      return CART_STATE
+    })
+  }
+
   const cartItems = Object.keys(cart.products).map(key => {
     const { price: PRODUCT_PRICE } = products.find(({ id }) => `${id}` === `${key}`)
 
@@ -51,7 +64,7 @@ export const useCartState = () => {
     return {
       id,
       pricePerItem,
-      quantity,
+      quantity: <Quantity {...{ id, quantity }} />,
       title,
       total: quantity * pricePerItem
     }
@@ -76,6 +89,7 @@ export const useCartState = () => {
     handleInitiateCheckout,
     subTotal,
     totalItems,
+    updateItem,
   }
 }
 
