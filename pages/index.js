@@ -28,8 +28,8 @@ export default function Home() {
                 <a>
                   <img alt={title} src={image} />
                   <h3>{title}</h3>
-                  <span>${price}</span>
                   <p>{description}</p>
+                  <span>${price}</span>
                 </a>
               </Link>
               <p>
