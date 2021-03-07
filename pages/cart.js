@@ -1,5 +1,5 @@
+import Button from '../components/Button'
 import Head from 'next/head'
-import products from '../products.json'
 import Table from '../components/Table'
 import styles from '../styles/Cart.module.css'
 import { CART_TABLE_COLUMNS } from '../lib/constans'
@@ -24,9 +24,7 @@ const Cart = () => {
         <Table className={styles.table} columns={CART_TABLE_COLUMNS} data={cartItemsTableData} />
 
         <p className={styles.checkout}>
-          <button className={styles.button} onClick={handleInitiateCheckout}>
-            Check out
-          </button>
+          <Button onClick={handleInitiateCheckout}>Check out</Button>
         </p>
       </main>
     </div>

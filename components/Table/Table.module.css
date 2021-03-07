@@ -20,3 +20,9 @@
 .table td:not(:first-child) {
   text-align: center;
 }
+
+.input {
+  width: 5em;
+  height: 30px;
+  line-height: 30px;
+}

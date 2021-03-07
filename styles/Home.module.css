@@ -1,19 +1,19 @@
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  min-height: calc(100vh - 164px);
+  padding: 0 0.5rem;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  flex: 1;
   justify-content: center;
-  align-items: center;
+  padding: 5rem 0;
 }
 
 .title a {
@@ -28,9 +28,9 @@
 }
 
 .title {
-  margin: 0;
-  line-height: 1.15;
   font-size: 3.5rem;
+  line-height: 1.15;
+  margin: 0;
 }
 
 .title,
@@ -39,37 +39,37 @@
 }
 
 .description {
-  line-height: 1.5;
   font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 .code {
   background: #fafafa;
   border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  font-size: 1.1rem;
+  padding: 0.75rem;
 }
 
 .grid {
-  display: flex;
   align-items: stretch;
-  justify-content: flex-start;
+  display: flex;
   flex-wrap: wrap;
-  max-width: 60rem;
-  margin-top: 3rem;
+  justify-content: flex-start;
   list-style: none;
-  padding-left: 0;
   margin-top: 3rem;
+  margin-top: 3rem;
+  max-width: 60rem;
+  padding-left: 0;
 }
 
 .card {
-  margin: 1rem;
+  color: inherit;
   flex-basis: calc(50% - 2rem);
+  margin: 1rem;
   padding: 1.5rem;
   text-align: left;
-  color: inherit;
   text-decoration: none;
   transition: color 0.15s ease, border-color 0.15s ease;
 }
@@ -81,11 +81,11 @@
 }
 
 .card img {
+  border-radius: 0.5em;
   display: block;
+  margin: 0 -0.5em 1em;
   max-width: 100%;
   padding: 0.5em;
-  border-radius: 0.5em;
-  margin: 0 -0.5em 1em;
 }
 
 .card:hover img {
@@ -93,59 +93,37 @@
 }
 
 .card h3 {
-  margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .card p {
-  margin: 0 0 1em;
   font-size: 1.25rem;
   line-height: 1.5;
+  margin: 0 0 1em;
 }
 
 @media (max-width: 600px) {
   .grid {
-    width: 100%;
     flex-direction: column;
+    width: 100%;
   }
-}
-
-.button {
-  color: white;
-  font-family: inherit;
-  font-size: 0.9em;
-  font-weight: 700;
-  background-color: blueviolet;
-  padding: 0.8em 1.4em;
-  border-radius: 0.2em;
-  border: 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
 }
 
 .cart {
   display: flex;
+  font-size: 1.5em;
   list-style: none;
   padding: 0;
-  font-size: 1.5em;
 }
 
 .cart li {
-  display: flex;
   align-items: center;
+  display: flex;
   margin: 0 0.5em;
 }
 
 .cart strong,
 .cart svg {
   margin-right: 0.4em;
-}
-
-.cartButton {
-  display: inline-flex;
-  align-items: center;
-  color: blueviolet;
-  background: none;
-  box-shadow: none;
-  padding: 0;
 }

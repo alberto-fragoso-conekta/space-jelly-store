@@ -1,3 +1,4 @@
+import styles from './Table.module.css'
 import { useCart } from '../../hooks/useCart'
 
 const Quantity = ({ id, quantity }) => {
@@ -9,7 +10,7 @@ const Quantity = ({ id, quantity }) => {
   }
 
   return (
-    <input min={0} onChange={handleQuantityChange} type='number' defaultValue={quantity} />
+    <input className={styles.input} min={0} onChange={handleQuantityChange} type='number' defaultValue={quantity} />
   )
 }
 

@@ -1,3 +1,4 @@
+import Button from '../components/Button'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
@@ -32,7 +33,7 @@ export default function Home() {
                 </a>
               </Link>
               <p>
-                <button className={styles.button} onClick={() => addToCart(id)}>Buy now!</button>
+                <Button onClick={() => addToCart(id)}>Buy now!</Button>
               </p>
             </li>
           )

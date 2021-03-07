@@ -23,7 +23,7 @@ const Product = ({ product: { description, id, image, price, title } }) =>
           <h1>{ title }</h1>
           <p className={styles.description}>{ description }</p>
           <p className={styles.description}>${ price.toFixed(2) }</p>
-          <p><button className={styles.button} onClick={() => addToCart(id)}>Buy</button></p>
+          <p><Button onClick={() => addToCart(id)}>Buy</Button></p>
         </div>
       </main>
     </div>
