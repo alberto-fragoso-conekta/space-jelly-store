@@ -37,33 +37,10 @@
   font-size: 1.2rem;
 }
 
-.footer {
-  align-items: center;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  height: 100px;
-  justify-content: center;
-  width: 100%;
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
 .description {
   font-size: 1.5rem;
   line-height: 1.5;
   text-align: center;
-}
-
-.logo {
-  height: 1em;
 }
 
 .button {
