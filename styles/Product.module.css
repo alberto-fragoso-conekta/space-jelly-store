@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 164px);
   padding: 0 0.5rem;
 }
 
@@ -39,12 +39,16 @@
   margin-right: 2em;
 }
 
+.productImage img {
+  border-radius: 0.5em;
+  display: block;
+  margin: 0 -0.5em 1em;
+  max-width: 100%;
+  padding: 0.5em;
+}
+
 @media (max-width: 960px) {
   .productImage {
     margin: 0;
   }
-}
-
-.productImage img {
-  max-width: 400px;
 }

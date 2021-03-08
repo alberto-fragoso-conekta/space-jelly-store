@@ -24,7 +24,9 @@ const Product = ({ product: { description, id, image, price, title } }) =>
           <h1>{ title }</h1>
           <p className={styles.description}>{ description }</p>
           <p className={styles.description}>${ price.toFixed(2) }</p>
-          <p><Button onClick={() => addItem(id)}>Buy</Button></p>
+          <p>
+            <Button onClick={() => addItem(id)}>Buy now!</Button>
+          </p>
         </div>
       </main>
     </div>
