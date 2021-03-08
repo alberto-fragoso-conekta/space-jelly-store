@@ -1,3 +1,4 @@
+import Button from '../../components/Button'
 import Head from 'next/head'
 import products from '../../products.json'
 import styles from '../../styles/Product.module.css'
@@ -5,7 +6,7 @@ import { useCart } from '../../hooks/useCart'
 
 const Product = ({ product: { description, id, image, price, title } }) => 
 {
-  const { addToCart } = useCart()
+  const { addItem } = useCart()
 
   return (
     <div className={styles.container}>
@@ -23,7 +24,7 @@ const Product = ({ product: { description, id, image, price, title } }) =>
           <h1>{ title }</h1>
           <p className={styles.description}>{ description }</p>
           <p className={styles.description}>${ price.toFixed(2) }</p>
-          <p><Button onClick={() => addToCart(id)}>Buy</Button></p>
+          <p><Button onClick={() => addItem(id)}>Buy</Button></p>
         </div>
       </main>
     </div>

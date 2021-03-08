@@ -1,5 +1,5 @@
-import Quantity from '../components/Table/Quantity'
 import products from '../products.json'
+import Quantity from '../components/Table/Quantity'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { initiateCheckout } from '../lib/payments'
 import { INITIAL_CART_STATE, SPACE_JELLY_CART_LOCAL_STORAGE_NAME } from '../lib/constans'
@@ -23,7 +23,7 @@ export const useCartState = () => {
     window.localStorage.setItem(SPACE_JELLY_CART_LOCAL_STORAGE_NAME, CART_DATA)
   }, [cart])
 
-  const addToCart = id => {
+  const addItem = id => {
     updateCart(prev => {
       const CART_STATE = { ...prev }
 
@@ -31,6 +31,18 @@ export const useCartState = () => {
         CART_STATE.products[id].quantity = CART_STATE.products[id].quantity + 1
       } else {
         CART_STATE.products[id] = { id, quantity: 1 }
+      }
+
+      return CART_STATE
+    })
+  }
+
+  const removeItem = id => {
+    updateCart(prev => {
+      const CART_STATE = { ...prev }
+
+      if (CART_STATE.products[id]) {
+        delete CART_STATE.products[id]
       }
 
       return CART_STATE
@@ -83,10 +95,11 @@ export const useCartState = () => {
   const totalItems = cartItems.reduce((acc, { quantity }) => acc += quantity, 0)
 
   return {
-    addToCart,
+    addItem,
     cartItems,
     cartItemsTableData,
     handleInitiateCheckout,
+    removeItem,
     subTotal,
     totalItems,
     updateItem,

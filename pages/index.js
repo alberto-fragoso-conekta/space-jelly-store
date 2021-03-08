@@ -6,7 +6,7 @@ import products from '../products.json'
 import { useCart } from '../hooks/useCart'
 
 export default function Home() {
-  const { addToCart } = useCart()
+  const { addItem } = useCart()
 
   return (
     <div className={styles.container}>
@@ -33,7 +33,7 @@ export default function Home() {
                 </a>
               </Link>
               <p>
-                <Button onClick={() => addToCart(id)}>Buy now!</Button>
+                <Button onClick={() => addItem(id)}>Buy now!</Button>
               </p>
             </li>
           )
